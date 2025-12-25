@@ -1,0 +1,7 @@
+{
+  "name": "carnet-meteo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
