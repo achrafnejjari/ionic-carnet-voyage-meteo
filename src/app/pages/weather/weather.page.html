@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Météo - {{ city?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="current">
+    <ion-card-header text-center>
+      <h1>{{ current.main.temp }} °C</h1>
+      <img [src]="'https://openweathermap.org/img/wn/' + current.weather[0].icon + '@4x.png'" />
+      <p>{{ current.weather[0].description | titlecase }}</p>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item><ion-label>Min / Max</ion-label>{{ current.main.temp_min }} / {{ current.main.temp_max }} °C</ion-item>
+        <ion-item><ion-label>Humidité</ion-label>{{ current.main.humidity }}%</ion-item>
+        <ion-item><ion-label>Vent</ion-label>{{ current.wind.speed }} m/s</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <h2 class="ion-padding-top">Prévisions 5 jours</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let day of forecast">
+        <ion-card text-center>
+          <ion-card-content>
+            <p>{{ day.dt_txt | date:'EEE dd MMM' }}</p>
+            <img [src]="'https://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" />
+            <h3>{{ day.main.temp }} °C</h3>
+            <p>{{ day.weather[0].description }}</p>
+            <small>Min {{ day.main.temp_min }}° / Max {{ day.main.temp_max }}°</small>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

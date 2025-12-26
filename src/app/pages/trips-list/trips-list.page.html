@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Mes Plannings de Voyage</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToNewTrip()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="trips.length > 0">
+    <ion-item button *ngFor="let trip of trips" (click)="goToTripDetail(trip.id)">
+      <ion-label>
+        <h2>{{ trip.name || 'Voyage sans nom' }}</h2>
+        <p>{{ trip.steps.length }} étape(s)</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" color="danger" (click)="deleteTrip(trip.id); $event.stopPropagation()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div class="empty" *ngIf="trips.length === 0">
+    <ion-icon name="airplane" size="large"></ion-icon>
+    <h3>Aucun planning créé</h3>
+    <p>Commencez par créer votre premier voyage !</p>
+    <ion-button expand="block" (click)="goToNewTrip()">Créer un planning</ion-button>
+  </div>
+</ion-content>

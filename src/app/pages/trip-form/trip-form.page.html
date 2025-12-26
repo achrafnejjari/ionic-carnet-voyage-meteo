@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ editMode ? 'Modifier' : 'Nouveau' }} Planning</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Nom du voyage</ion-label>
+    <ion-input [(ngModel)]="trip.name"></ion-input>
+  </ion-item>
+
+  <h3>Étapes du voyage</h3>
+  <div *ngFor="let step of trip.steps; let i = index">
+    <ion-card>
+      <ion-item>
+        <ion-label>Sélectionner ville</ion-label>
+        <ion-select [(ngModel)]="step.city">
+          <ion-select-option *ngFor="let c of cities" [value]="c">{{ c.name }}, {{ c.country }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Début</ion-label>
+        <ion-input type="date" [(ngModel)]="step.startDate"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fin</ion-label>
+        <ion-input type="date" [(ngModel)]="step.endDate"></ion-input>
+      </ion-item>
+      <ion-button color="danger" (click)="removeStep(i)">Supprimer</ion-button>
+    </ion-card>
+  </div>
+
+  <ion-button expand="block" (click)="addStep()" *ngIf="cities.length > 0">+ Ajouter une étape</ion-button>
+  <ion-button expand="block" color="success" (click)="saveTrip()">Sauvegarder le planning</ion-button>
+</ion-content>

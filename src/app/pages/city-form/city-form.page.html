@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ editCityId ? 'Modifier Ville' : 'Ajouter Ville' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input placeholder="Rechercher une ville" [(ngModel)]="cityName" (ionInput)="onSearch($event)"></ion-input>
+  </ion-item>
+
+  <ion-list *ngIf="results.length > 0">
+    <ion-item button *ngFor="let c of results" (click)="selectCity(c)">
+      {{ c.name }} ({{ c.country }})
+    </ion-item>
+  </ion-list>
+</ion-content>

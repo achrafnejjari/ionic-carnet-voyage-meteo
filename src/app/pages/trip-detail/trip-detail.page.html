@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/trips-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ trip?.name || 'Mon Voyage' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Étapes du voyage</h2>
+  <ion-list>
+    <ion-item *ngFor="let step of trip?.steps">
+      <ion-label>
+        <h3>{{ step.city.name }}, {{ step.city.country }}</h3>
+        <p>{{ step.startDate | date:'dd MMM' }} → {{ step.endDate | date:'dd MMM yyyy' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <h2 class="ion-padding-top">Notes par jour</h2>
+  <ion-list>
+    <ion-item *ngFor="let day of days">
+      <ion-label>
+        <h3>{{ day.date | date:'fullDate' }}</h3>
+        <p *ngIf="!day.note" class="placeholder">Aucune note...</p>
+      </ion-label>
+      <ion-textarea 
+        [(ngModel)]="day.note" 
+        placeholder="Que faire ce jour ? Restaurant, visite, etc."
+        rows="3"
+        (ionChange)="saveNotes()">
+      </ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>

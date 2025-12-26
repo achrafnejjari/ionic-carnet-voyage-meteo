@@ -1,0 +1,80 @@
+.background {
+  --background: linear-gradient(to bottom, #667eea, #764ba2);
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  color: white;
+
+
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 20px 0 40px;
+  }
+}
+
+.big-button {
+  margin: 12px 40px;
+  height: 56px;
+  font-size: 18px;
+  --border-width: 3px;
+}
+
+.city-card {
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  position: relative;
+  margin: 15px;
+  overflow: visible;
+  background: white;
+}
+
+.weather-icon {
+  text-align: center;
+  padding-top: 20px;
+  img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+ion-fab {
+  margin: 12px;
+}
+
+ion-fab-button {
+  --box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 80px;
+  color: white;
+
+  ion-icon {
+    font-size: 100px;
+    margin-bottom: 20px;
+  }
+
+  h3, p {
+    color: white;
+  }
+}
+
+h2 {
+  color: white;
+  font-size: 26px;
+  text-align: center;
+  margin: 40px 0 20px;
+}
